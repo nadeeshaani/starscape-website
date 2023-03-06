@@ -9,7 +9,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
     "@heroicons/react": "^2.0.11",
+    "@mui/material": "^5.11.11",
     "@reduxjs/toolkit": "^1.8.5",
     "@splidejs/react-splide": "^0.7.10",
     "lodash": "^4.17.21",

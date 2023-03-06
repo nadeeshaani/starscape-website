@@ -23,6 +23,9 @@ import instagram from "../assets/instagram.svg";
 import twitter from "../assets/twitter.svg";
 import youtube from "../assets/youtube.svg";
 import messenger from "../assets/messenger.svg";
+import search from '../assets/search.png';
+
+
 
 
 
@@ -34,6 +37,7 @@ const heroapi = {
 
   searchbar: {
     placeholder: "Explore",
+    img: search,
   },
 
   videos: [

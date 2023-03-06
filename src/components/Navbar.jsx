@@ -51,7 +51,7 @@ return (
                     <a href='#' className={`text-lg font-medium ${navState ? 'text-slate-100' : 'text-white'} transition-all duration-300 hover:text-slate-900`}>Products</a>
                 </li>
                 <li className='px-4'>
-                    <a href='#' className={`text-lg font-medium ${navState ? 'text-slate-100' : 'text-white'} transition-all duration-300 hover:text-slate-900`}>Ccntact Us</a>
+                    <a href='#' className={`text-lg font-medium ${navState ? 'text-slate-100' : 'text-white'} transition-all duration-300 hover:text-slate-900`}>Contact Us</a>
                 </li>
             </ul>
         </div>

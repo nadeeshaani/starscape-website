@@ -15,21 +15,23 @@ const Hero = ({ heroapi: { title, subtitle, btntext, searchbar, img, sociallinks
             <br />
             <button type='button' className='button-theme'></button>
             {searchbar && (
-                <div className='grid items-center justify-items-center'>
-                  
-                  <input
-                    type='text'
-                    className='border border-none bg-cyan-100 bg-opacity-25 rounded-md px-4 py-2 w-80 focus:outline-none'
-                    placeholder={searchbar.placeholder}
-                  />
-                  <img
-                    
-                  />
-                  
-                </div>
-
-                
-              )}
+  <div className='relative'>
+    <input
+      type='text'
+      className='border border-none bg-cyan-100 bg-opacity-25 rounded-md px-4 py-2 w-96 pl-10 focus:outline-none'
+      placeholder={searchbar.placeholder}
+    />
+    <img
+      src={searchbar.img}
+      alt={searchbar.imageAlt}
+      className='absolute top-2 left-2 w-6 h-6'
+      style={{ opacity: 0.5, cursor: 'pointer' }}
+      onClick={() => {
+        // perform search logic here
+      }}
+    />
+  </div>
+)}
             <div className='grid items-center gap-5 md:gap-3 absolute top-[33vh] lg:top-[27vh] left-[11%] xl:left-0 w-auto h-auto'>
             
             </div>
