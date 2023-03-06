@@ -1,8 +1,7 @@
 import React from 'react';
-import Clips from './utils/Clips';
 import SocialLink from './utils/SocialLink';
 
-const Hero = ({ heroapi: { title, subtitle, btntext, searchbar, img, sociallinks, videos } }) => {
+const Hero = ({ heroapi: { title, subtitle, btntext, searchbar, img, sociallinks} }) => {
   // console.log(heroapi)
   return (
    <>

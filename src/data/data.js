@@ -3,11 +3,6 @@ import heroimg from "../assets/hero.png";
 import hightlightimg from "../assets/hightlightimg.png";
 import featured from "../assets/featured.png";
 
-import clip from "../assets/video/clip.mp4";
-import vcover1 from "../assets/video/vcover1.png";
-import vcover2 from "../assets/video/vcover2.png";
-import vcover3 from "../assets/video/vcover3.png";
-
 import psale1 from "../assets/spacesuit.png";
 import psale2 from "../assets/pngegg.png";
 import psale3 from "../assets/moonrock.png";
@@ -40,11 +35,6 @@ const heroapi = {
     img: search,
   },
 
-  videos: [
-    { imgsrc: vcover1, clip: clip },
-    { imgsrc: vcover2, clip: clip },
-    { imgsrc: vcover3, clip: clip },
-  ],
   sociallinks: [
     { icon: facebook },
     { icon: messenger },
