@@ -23,7 +23,7 @@ const Hero = ({ heroapi: { title, subtitle, btntext, searchbar, img, sociallinks
     <img
       src={searchbar.img}
       alt={searchbar.imageAlt}
-      className='absolute top-2 left-2 w-6 h-6'
+      className='absolute top-2 left-2 w-6 h-6 transition duration-300 ease-in-out transform hover:scale-90'
       style={{ opacity: 0.5, cursor: 'pointer' }}
       onClick={() => {
         // perform search logic here

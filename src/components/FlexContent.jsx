@@ -9,11 +9,11 @@ const FlexContent = ({ ifExists, endpoint: { title, heading, text, img, btn, url
           <h1 className='text-5xl lg:text-4xl md:text-3xl sm:text-2xl font-bold text-white filter drop-shadow-lg'>{title}</h1>
           <p className='xl:text-sm my-4 text-white'>{text}</p>
           <a href={url} className="flex items-center" target={"_blank"} role="button">
-          <button type='button' className='button-theme bg-gradient-to-r from-cyan-900 to-indigo-900  text-white py-1.5 rounded-md'>{btn}</button>
+          <button type='button' className='button-theme bg-gradient-to-r from-cyan-900 to-indigo-900  text-white py-1.5 rounded-md transition duration-200 ease-in-out transform hover:scale-95'>{btn}</button>
 
           </a>
         </div>
-        <div className='flex items-center justify-center max-w-xl relative lg:max-w-none w-full'>
+        <div className='flex items-center justify-center max-w-xl relative lg:max-w-none w-full '>
           <img
             src={img}
             alt={`img/${heading}`}
