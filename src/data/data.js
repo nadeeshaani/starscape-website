@@ -31,7 +31,7 @@ const heroapi = {
   btntext: "Explore Product",
 
   searchbar: {
-    placeholder: "E x p l o r e . . .",
+    placeholder: "Search our store",
     img: search,
   },
 
