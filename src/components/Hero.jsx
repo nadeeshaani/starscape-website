@@ -17,7 +17,7 @@ const Hero = ({ heroapi: { title, subtitle, btntext, searchbar, img, sociallinks
   <div className='relative'>
     <input
       type='text'
-      className='border border-none bg-cyan-100 bg-opacity-25 rounded-md px-4 py-2 w-96 pl-10 focus:outline-none text-white'
+      className='border border-none bg-gray-300 bg-opacity-25 rounded-full px-5 py-2 w-96 pl-10 focus:outline-none text-white'
       placeholder={searchbar.placeholder}
     />
     <img

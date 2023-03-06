@@ -12,7 +12,7 @@ const FlexContent = ({ ifExists, endpoint: { title, heading, text, img, btn, url
             <br />
             <br />
             <br />
-          <button type='button' className='button-theme bg-gradient-to-r from-cyan-900 to-indigo-900  text-white py-1.5 rounded-md transition duration-200 ease-in-out transform hover:scale-95'>{btn}</button>
+          <button type='button' className='button-theme bg-gradient-to-r from-cyan-900 to-indigo-900  text-white py-1.5 rounded-full transition duration-200 ease-in-out transform hover:scale-95'>{btn}</button>
 
           </a>
         </div>
