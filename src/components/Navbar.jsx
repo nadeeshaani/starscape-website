@@ -45,13 +45,13 @@ return (
             />
             <ul className='flex items-center justify-center'>
                 <li className='px-4'>
-                    <a href='#' className={`text-lg font-medium ${navState ? 'text-slate-100' : 'text-white'} transition-all duration-300 hover:text-slate-900`}>Home</a>
+                    <a href='#' className={`text-lg font-medium ${navState ? 'text-slate-100' : 'text-white'} transition-all duration-300 hover:text-gray-500`}>Home</a>
                 </li>
                 <li className='px-4'>
-                    <a href='#' className={`text-lg font-medium ${navState ? 'text-slate-100' : 'text-white'} transition-all duration-300 hover:text-slate-900`}>Products</a>
+                    <a href='#' className={`text-lg font-medium ${navState ? 'text-slate-100' : 'text-white'} transition-all duration-300 hover:text-gray-500`}>Products</a>
                 </li>
                 <li className='px-4'>
-                    <a href='#' className={`text-lg font-medium ${navState ? 'text-slate-100' : 'text-white'} transition-all duration-300 hover:text-slate-900`}>Contact Us</a>
+                    <a href='#' className={`text-lg font-medium ${navState ? 'text-slate-100' : 'text-white'} transition-all duration-300 hover:text-gray-500`}>Contact Us</a>
                 </li>
             </ul>
         </div>
