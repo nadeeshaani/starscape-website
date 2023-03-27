@@ -1,5 +1,6 @@
 package com.example.backend.Service;
 
+import com.example.backend.Exception.ResourceNotFoundException;
 import com.example.backend.Model.Product;
 import com.example.backend.Repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ public class ProductServiceImpl implements ProductService{
 
     @Override
     public Product getProductById(int product_id) {
-        Product productById = productRepository.findById(product_id);
+        Product productById = productRepository.findById(product_id).orElseThrow(()->new ResourceNotFoundException("Product not found."));
         return productById;
     }
 
@@ -38,7 +39,7 @@ public class ProductServiceImpl implements ProductService{
 
     @Override
     public Product updateProduct(int product_id, Product new_product) {
-        Product old_product = productRepository.findById(product_id);
+        Product old_product = productRepository.findById(product_id).orElseThrow(()->new ResourceNotFoundException("Product not found."));
         old_product.setProduct_name(new_product.getProduct_name());
         old_product.setProduct_imageName(new_product.getProduct_imageName());
         old_product.setLive(new_product.isLive());
