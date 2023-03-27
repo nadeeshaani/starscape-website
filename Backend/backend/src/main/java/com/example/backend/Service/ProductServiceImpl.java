@@ -1,8 +1,10 @@
 package com.example.backend.Service;
 
 import com.example.backend.Exception.ResourceNotFoundException;
+import com.example.backend.Model.Category;
 import com.example.backend.Model.Product;
 import com.example.backend.Payload.ProductDTO;
+import com.example.backend.Repository.CategoryRepository;
 import com.example.backend.Repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,10 +18,21 @@ public class ProductServiceImpl implements ProductService{
     @Autowired
     private ProductRepository productRepository;
 
+    @Autowired
+    private CategoryRepository categoryRepository;
+
     @Override
-    public ProductDTO addProduct(ProductDTO product) {
+    public ProductDTO addProduct(ProductDTO product, int category_id) {
+        //Fetch category is available or not
+        Category category = this.categoryRepository.findById(category_id).orElseThrow(()->new ResourceNotFoundException("This category ID is not found"));
+
         //ProductDTO to Product conversion
         Product entity = toEntity(product);
+
+        //set the category of the product
+        entity.setCategory(category);
+
+        //save the product
         Product save = productRepository.save(entity);
 
         //Product to ProductDTO conversion

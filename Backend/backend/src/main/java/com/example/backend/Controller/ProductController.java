@@ -20,9 +20,8 @@ public class ProductController {
     @PostMapping("/add")
     @ResponseBody
     //add products
-    public ResponseEntity<ProductDTO> addProduct(@RequestBody ProductDTO product){
-        System.out.println(product.getProduct_name());
-        ProductDTO addedProduct = productService.addProduct(product);
+    public ResponseEntity<ProductDTO> addProduct(@RequestBody ProductDTO product, @RequestParam int category_id){
+        ProductDTO addedProduct = productService.addProduct(product, category_id);
         return new ResponseEntity<ProductDTO>(addedProduct,HttpStatus.CREATED);
     }
 
