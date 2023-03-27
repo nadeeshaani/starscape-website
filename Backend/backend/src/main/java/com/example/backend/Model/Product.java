@@ -1,7 +1,6 @@
 package com.example.backend.Model;
 
 import jakarta.persistence.*;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @Entity
 @Table(name = "product")
