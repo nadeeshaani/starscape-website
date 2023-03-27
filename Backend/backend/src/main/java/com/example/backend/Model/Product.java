@@ -1,11 +1,13 @@
 package com.example.backend.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
+@Entity
+@Table(name = "product")
 public class Product {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int product_id;
     private String product_name;
     private double product_price;
