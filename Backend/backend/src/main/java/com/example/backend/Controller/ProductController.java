@@ -1,6 +1,7 @@
 package com.example.backend.Controller;
 
 import com.example.backend.Model.Product;
+import com.example.backend.Payload.ProductDTO;
 import com.example.backend.Service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,24 +20,24 @@ public class ProductController {
     @PostMapping("/add")
     @ResponseBody
     //add products
-    public ResponseEntity<Product> addProduct(@RequestBody Product product){
+    public ResponseEntity<ProductDTO> addProduct(@RequestBody ProductDTO product){
         System.out.println(product.getProduct_name());
-        Product addedProduct = productService.addProduct(product);
-        return new ResponseEntity<Product>(addedProduct,HttpStatus.CREATED);
+        ProductDTO addedProduct = productService.addProduct(product);
+        return new ResponseEntity<ProductDTO>(addedProduct,HttpStatus.CREATED);
     }
 
     //View all products
     @GetMapping("/viewAll")
-    public ResponseEntity<List<Product>> getAllProducts(){
-        List<Product> allProducts = productService.getAllProducts();
-        return new ResponseEntity<List<Product>>(allProducts,HttpStatus.ACCEPTED);
+    public ResponseEntity<List<ProductDTO>> getAllProducts(){
+        List<ProductDTO> allProducts = productService.getAllProducts();
+        return new ResponseEntity<List<ProductDTO>>(allProducts,HttpStatus.ACCEPTED);
     }
 
     //view product by id
     @GetMapping("/viewById")
-    public ResponseEntity<Product> getProductById(@RequestParam int product_id){
-        Product productById = productService.getProductById(product_id);
-        return new ResponseEntity<Product>(productById,HttpStatus.OK);
+    public ResponseEntity<ProductDTO> getProductById(@RequestParam int product_id){
+        ProductDTO productById = productService.getProductById(product_id);
+        return new ResponseEntity<ProductDTO>(productById,HttpStatus.OK);
     }
 
     //delete product by product id
@@ -48,9 +49,9 @@ public class ProductController {
 
     //update product details by product id
     @PutMapping("/update")
-    public ResponseEntity<Product> updateProduct(@RequestParam int product_id, @RequestBody Product new_product){
-        Product updatedProduct = productService.updateProduct(product_id,new_product);
-        return new ResponseEntity<Product>(updatedProduct,HttpStatus.ACCEPTED);
+    public ResponseEntity<ProductDTO> updateProduct(@RequestParam int product_id, @RequestBody ProductDTO new_product){
+        ProductDTO updatedProduct = productService.updateProduct(product_id,new_product);
+        return new ResponseEntity<ProductDTO>(updatedProduct,HttpStatus.ACCEPTED);
     }
 
 

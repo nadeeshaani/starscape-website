@@ -2,12 +2,14 @@ package com.example.backend.Service;
 
 import com.example.backend.Exception.ResourceNotFoundException;
 import com.example.backend.Model.Product;
+import com.example.backend.Payload.ProductDTO;
 import com.example.backend.Repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductServiceImpl implements ProductService{
@@ -15,21 +17,32 @@ public class ProductServiceImpl implements ProductService{
     private ProductRepository productRepository;
 
     @Override
-    public Product addProduct(Product product) {
-        Product save = productRepository.save(product);
-        return save;
+    public ProductDTO addProduct(ProductDTO product) {
+        //ProductDTO to Product conversion
+        Product entity = toEntity(product);
+        Product save = productRepository.save(entity);
+
+        //Product to ProductDTO conversion
+        ProductDTO dto = toDTO(save);
+        return dto;
     }
 
     @Override
-    public List<Product> getAllProducts() {
+    public List<ProductDTO> getAllProducts() {
         List<Product> allProducts = productRepository.findAll();
-        return allProducts;
+
+        //Product to ProductDTO conversion
+        List<ProductDTO> allProductDTOs = allProducts.stream().map(product -> this.toDTO(product)).collect(Collectors.toList());
+        return allProductDTOs;
     }
 
     @Override
-    public Product getProductById(int product_id) {
+    public ProductDTO getProductById(int product_id) {
         Product productById = productRepository.findById(product_id).orElseThrow(()->new ResourceNotFoundException("Product not found."));
-        return productById;
+
+        //Product to ProductDTO conversion
+        ProductDTO dto = toDTO(productById);
+        return dto;
     }
 
     @Override
@@ -39,7 +52,7 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public Product updateProduct(int product_id, Product new_product) {
+    public ProductDTO updateProduct(int product_id, ProductDTO new_product) {
         Product old_product = productRepository.findById(product_id).orElseThrow(()->new ResourceNotFoundException("Product not found."));
         old_product.setProduct_name(new_product.getProduct_name());
         old_product.setProduct_imageName(new_product.getProduct_imageName());
@@ -50,6 +63,37 @@ public class ProductServiceImpl implements ProductService{
         old_product.setProduct_quantity(new_product.getProduct_quantity());
 
         Product updatedProduct = productRepository.save(old_product);
-        return updatedProduct;
+        ProductDTO dto = toDTO(updatedProduct);
+        return dto;
     }
+
+    //ProductDTO to Product
+    public Product toEntity(ProductDTO productDTO){
+        Product product = new Product();
+        product.setProduct_name(productDTO.getProduct_name());
+        product.setProduct_id(productDTO.getProduct_id());
+        product.setProduct_quantity(productDTO.getProduct_quantity());
+        product.setProduct_price(productDTO.getProduct_price());
+        product.setProduct_description(productDTO.getProduct_description());
+        product.setProduct_imageName(productDTO.getProduct_imageName());
+        product.setStatus(productDTO.isStatus());
+        product.setLive(product.isLive());
+        return product;
+    }
+
+    //Product to ProdcutDTO
+    public ProductDTO toDTO(Product product){
+        ProductDTO productDTO = new ProductDTO();
+        productDTO.setProduct_name(product.getProduct_name());
+        productDTO.setProduct_price(product.getProduct_price());
+        productDTO.setProduct_id(product.getProduct_id());
+        productDTO.setProduct_description(product.getProduct_description());
+        productDTO.setProduct_imageName(product.getProduct_imageName());
+        productDTO.setProduct_quantity(product.getProduct_quantity());
+        productDTO.setLive(product.isLive());
+        productDTO.setStatus(product.isStatus());
+
+        return productDTO;
+    }
+
 }
