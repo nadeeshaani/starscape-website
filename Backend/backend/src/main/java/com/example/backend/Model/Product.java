@@ -18,6 +18,18 @@ public class Product {
 
     private String product_imageName;
 
+    //Many products belong to one category. Creating mapping between product and category
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Category category;
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
     public int getProduct_id() {
         return product_id;
     }
