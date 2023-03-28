@@ -1,5 +1,7 @@
 package com.example.backend.Payload;
 
+import com.example.backend.Model.Category;
+
 public class ProductDTO {
     private int product_id;
     private String product_name;
@@ -11,6 +13,15 @@ public class ProductDTO {
     private boolean live;
 
     private String product_imageName;
+    private CategoryDTO category;
+
+    public CategoryDTO getCategory() {
+        return category;
+    }
+
+    public void setCategory(CategoryDTO category) {
+        this.category = category;
+    }
 
     public int getProduct_id() {
         return product_id;

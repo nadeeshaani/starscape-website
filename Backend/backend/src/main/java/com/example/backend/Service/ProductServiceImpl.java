@@ -3,6 +3,7 @@ package com.example.backend.Service;
 import com.example.backend.Exception.ResourceNotFoundException;
 import com.example.backend.Model.Category;
 import com.example.backend.Model.Product;
+import com.example.backend.Payload.CategoryDTO;
 import com.example.backend.Payload.ProductDTO;
 import com.example.backend.Repository.CategoryRepository;
 import com.example.backend.Repository.ProductRepository;
@@ -106,6 +107,13 @@ public class ProductServiceImpl implements ProductService{
         productDTO.setLive(product.isLive());
         productDTO.setStatus(product.isStatus());
 
+        //change Category to CategoryDTO
+        CategoryDTO categoryDTO = new CategoryDTO();
+        categoryDTO.setCategory_id(product.getCategory().getCategory_id());
+        categoryDTO.setCategory_name(product.getCategory().getCategory_name());
+
+        //Set CategoryDTO in ProductDTO
+        productDTO.setCategory(categoryDTO);
         return productDTO;
     }
 

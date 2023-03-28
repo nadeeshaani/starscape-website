@@ -1,8 +1,13 @@
 package com.example.backend.Payload;
 
+import com.example.backend.Model.Product;
+
+import java.util.Set;
+
 public class CategoryDTO {
     private int category_id;
     private String category_name;
+
 
     public int getCategory_id() {
         return category_id;
