@@ -53,6 +53,11 @@ public class ProductController {
         return new ResponseEntity<ProductDTO>(updatedProduct,HttpStatus.ACCEPTED);
     }
 
-
+    //Find products by category
+    @GetMapping("/viewByCategory")
+    public ResponseEntity<List<ProductDTO>> getProductByCategory(@RequestParam int category_id){
+        List<ProductDTO> productsByCategory = productService.getProductsByCategory(category_id);
+        return new ResponseEntity<List<ProductDTO>>(productsByCategory, HttpStatus.ACCEPTED);
+    }
 
 }

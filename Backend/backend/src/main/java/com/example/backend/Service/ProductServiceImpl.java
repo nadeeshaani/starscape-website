@@ -117,4 +117,14 @@ public class ProductServiceImpl implements ProductService{
         return productDTO;
     }
 
+    //Get products by category
+    @Override
+    public List<ProductDTO> getProductsByCategory(int category_id) {
+        //Fetch category is available or not
+        Category category = this.categoryRepository.findById(category_id).orElseThrow(()->new ResourceNotFoundException("This category ID is not found"));
+
+        List<Product> productsByCategory = this.productRepository.findByCategory(category);
+        return productsByCategory.stream().map(product -> toDTO(product)).collect(Collectors.toList());
+    }
+
 }
