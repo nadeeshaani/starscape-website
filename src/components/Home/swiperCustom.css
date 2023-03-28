@@ -1,0 +1,26 @@
+/* @import "../../../node_modules/swiper/swiper.min.css";
+@import "../../../node_modules/swiper/swiper.css";
+@import "../../../node_modules/swiper/swiper-element-bundle.min.css"; */
+
+:root {
+  --swiper-theme-color: var(--txt-clr-2);
+  /*
+  --swiper-preloader-color: var(--swiper-theme-color);
+  --swiper-wrapper-transition-timing-function: initial;
+  */
+}
+
+.swiper,
+swiper-container {
+  z-index: 0;
+  padding-bottom: 54px;
+  cursor: grab;
+}
+
+.swiper-slide {
+  height: auto;
+}
+.swiper-wrapper > div {
+  border: 2px #fff solid;
+  border-radius: var(--radius);
+}

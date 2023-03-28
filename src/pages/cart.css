@@ -1,0 +1,142 @@
+.empty-cart-wrapper {
+  min-height: 100vh;
+}
+
+.empty-cart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.empty-cart img {
+  width: 10rem;
+  max-width: 40rem;
+  animation-name: animated-bag;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: cubic-bezier(0.5, 0.05, 1, 0.5);
+  transition: all ease-in-out 0.5s;
+}
+.empty-cart h4 {
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+.empty-cart p {
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 1vh 0;
+}
+
+@keyframes animated-bag {
+  0% {
+    transform: translateY(-2%);
+  }
+  25% {
+    transform: translateY(-1%);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  75% {
+    transform: translateY(1%);
+  }
+  100% {
+    transform: translateY(2%);
+  }
+}
+
+/* ======================================================================== */
+
+.cart-pg-wrapper {
+  min-height: 100vh;
+}
+.cart-list-wrapper {
+  width: 100%;
+}
+.p-img-cart {
+  object-fit: cover;
+  height: 80px;
+  max-width: 100%;
+  vertical-align: middle;
+  min-width: 100%;
+}
+
+.p-title-cart,
+.p-subtotal,
+.p-amount-container,
+.cart-price-details {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+}
+
+.cart-price-details,
+.p-title-cart {
+  flex-direction: column;
+}
+.p-title-cart p span {
+  width: 0.7rem;
+  display: inline-block;
+  height: 0.7rem;
+  vertical-align: middle;
+  border-radius: 50%;
+}
+
+.p-amount {
+  margin: auto;
+  border: 1px solid #e2e2e2;
+  border-radius: 100px;
+  font-size: 0.85rem;
+  display: flex;
+  gap: 0.3rem;
+  align-items: center;
+  padding: 2%;
+  justify-content: center;
+}
+
+.p-amount span {
+  vertical-align: middle;
+}
+
+.p-amount button > svg {
+  vertical-align: middle;
+  color: var(--txt-clr-2);
+}
+
+.p-bottom-border {
+  width: 96%;
+  margin: auto;
+  margin-top: 2%;
+}
+.cart-price-details {
+  justify-content: space-between;
+  height: auto;
+  gap: 1rem;
+}
+.checkout-btn {
+  animation: none;
+  width: 100%;
+}
+
+.reatil-price,
+.shipping-fee,
+.order-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 2%;
+}
+.reatil-price span,
+.shipping-fee span,
+.order-total span {
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--txt-clr-1);
+}

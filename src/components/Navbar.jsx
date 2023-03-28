@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectTotalQTY, setOpenCart } from '../app/CartSlice.js';
+import { Link } from "react-router-dom";
 
 import { HeartIcon, ShoppingBagIcon, UserIcon } from '@heroicons/react/24/outline'
 
@@ -24,6 +25,8 @@ const Navbar = () => {
             setNavState(false);
         }
     }
+
+
     useEffect(() => {
         window.addEventListener('scroll', onNavScroll);
 
@@ -45,13 +48,14 @@ return (
             />
             <ul className='flex items-center justify-center'>
                 <li className='px-4'>
-                    <a href='#' className={`text-lg font-medium ${navState ? 'text-slate-100' : 'text-white'} transition-all duration-300 hover:text-gray-500`}>Home</a>
+                    <Link to="/" className={`text-lg font-medium ${navState ? 'text-slate-100' : 'text-white'} transition-all duration-300 hover:text-gray-500`}>Home</Link>
                 </li>
                 <li className='px-4'>
-                    <a href='#' className={`text-lg font-medium ${navState ? 'text-slate-100' : 'text-white'} transition-all duration-300 hover:text-gray-500`}>Products</a>
+                    <Link to="products" className={`text-lg font-medium ${navState ? 'text-slate-100' : 'text-white'} transition-all duration-300 hover:text-gray-500`}>Products</Link>
                 </li>
+            
                 <li className='px-4'>
-                    <a href='#' className={`text-lg font-medium ${navState ? 'text-slate-100' : 'text-white'} transition-all duration-300 hover:text-gray-500`}>Contact Us</a>
+                <Link to="about" className={`text-lg font-medium ${navState ? 'text-slate-100' : 'text-white'} transition-all duration-300 hover:text-gray-500`}>About</Link>
                 </li>
             </ul>
         </div>
@@ -65,10 +69,11 @@ return (
                 <HeartIcon className={`icon-style ${navState && "text-slate-900 transition-all duration-300 hover:text-cyan-700"}`} />
             </li>
             <li className='grid items-center'>
-                <button type='button' onClick={onCartToggle} className='border-none outline-none active:scale-110 transition-all duration-300 relative'>
+            <Link to="cart" className={`text-lg font-medium ${navState ? 'text-slate-100' : 'text-white'} transition-all duration-300 hover:text-gray-500`}> <button type='button' onClick={onCartToggle} className='border-none outline-none active:scale-110 transition-all duration-300 relative'>
                     <ShoppingBagIcon className={`icon-style ${navState && "text-slate-900 transition-all duration-300 hover:text-cyan-700"}`} />
                     <div className={`absolute top-4 right-0 shadow w-4 h-4 text-[0.65rem] leading-tight font-medium rounded-full flex items-center justify-center cursor-pointer hover:scale-110 transition-all duration-300 ${navState ? 'bg-slate-900 text-slate-100 shadow-slate-900' : 'bg-slate-100 text-slate-900 shadow-slate-100'}`}>{totalQTY}</div>
-                </button>
+                </button></Link>
+               
             </li>
            
         </ul>
