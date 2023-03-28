@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "logoSrc": "/assets/img/main-logo1.png",
+    "URL": "/"
+  },
+  {
+    "id": 2,
+    "logoSrc": "/assets/img/main-logo2.png",
+    "URL": "/"
+  },
+  {
+    "id": 3,
+    "logoSrc": "/assets/img/main-logo3.png",
+    "URL": "/"
+  },
+  {
+    "id": 4,
+    "logoSrc": "/assets/img/main-logo4.png",
+    "URL": "/"
+  }
+ 
+]

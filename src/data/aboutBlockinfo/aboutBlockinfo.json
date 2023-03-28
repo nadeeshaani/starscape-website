@@ -1,0 +1,17 @@
+[
+  {
+    "step": "Free Shipping",
+    "title": "World wide",
+    "icon": "icon-shipping"
+  },
+  {
+    "step": "Helpline",
+    "title": "+1 345 99 71 345",
+    "icon": "icon-helpline"
+  },
+  {
+    "step": "Customer Support",
+    "title": "Finish!",
+    "icon": "icon-24"
+  }
+]

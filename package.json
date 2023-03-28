@@ -1,0 +1,22 @@
+{
+  "name": "beshop",
+  "private": true,
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "body-scroll-lock": "^4.0.0-beta.0",
+    "next": "^12.3.4",
+    "rc-slider": "^9.7.4",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-dropdown": "^1.9.2",
+    "react-rating-stars-component": "^2.2.0",
+    "react-simple-star-rating": "^4.0.0",
+    "react-slick": "^0.28.1",
+    "sass": "1.26.3",
+    "slick-carousel": "^1.8.1"
+  }
+}
