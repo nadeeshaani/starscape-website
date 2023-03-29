@@ -80,34 +80,30 @@ export const Shop = () => {
                 <ul>
                   <li>
                     <a href='#'>
-                      Make up <span>(37)</span>
+                      Telescopes <span>(37)</span>
                     </a>
                   </li>
                   <li>
                     <a href='#'>
-                      SPA <span>(162)</span>
+                      Collectibles <span>(162)</span>
                     </a>
                   </li>
                   <li>
                     <a href='#'>
-                      Perfume <span>(153)</span>
+                      Astrophotography <span>(153)</span>
                     </a>
                   </li>
                   <li>
                     <a href='#'>
-                      Nails <span>(86)</span>
+                      Meteorites <span>(86)</span>
                     </a>
                   </li>
                   <li>
                     <a href='#'>
-                      Skin care <span>(48)</span>
+                      Astronomy Books <span>(48)</span>
                     </a>
                   </li>
-                  <li>
-                    <a href='#'>
-                      Hair care <span>(54)</span>
-                    </a>
-                  </li>
+              
                 </ul>
               </div>
               <div className='shop-aside__item'>

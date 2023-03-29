@@ -48,7 +48,7 @@ export const Checkout = () => {
                   src={
                     activeStep <= index
                       ? '/assets/img/main-text-decor2.svg'
-                      : '/assets/img/main-text-decor.svg'
+                      : '/assets/img/main-text-decor2.svg'
                   }
                   className='js-img'
                   alt=''

@@ -30,13 +30,13 @@ export const Card = ({ wish }) => {
           )}
         </div>
         <div className='cart-table__col'>
-          <span className='cart-table__total'>
-            <Link href={`/product/${id}`}>
-              <a className='blog-item__link'>
-                buy now <i className='icon-arrow-md'></i>
-              </a>
-            </Link>
-          </span>
+        <Link href={`/product/${id}`} >
+  <a className='blog-item__link'>
+    <span style={{ color: 'black' }}> Buy now </span>
+    <i className='icon-arrow-md'></i>
+  </a>
+</Link>
+
         </div>
       </div>
       {/* <!-- WISHLIST CARD EOF--> */}

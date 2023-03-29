@@ -12,6 +12,56 @@
       }
     ]
   },
+
+  {
+    "title": "Pages",
+    "navLinks": [
+      {
+        "name": "Contacts",
+        "path": "/contact"
+      },
+      {
+        "name": "Shop",
+        "path": "/shop"
+      },
+      {
+        "name": "My Profile",
+        "path": "/profile"
+      },
+      {
+        "name": "Login",
+        "path": "/login"
+      },
+      {
+        "name": "Registration",
+        "path": "/registration"
+      },
+      {
+        "name": "Product",
+        "path": "/product"
+      },
+      {
+        "name": "Checkout",
+        "path": "/checkout"
+      },
+      {
+        "name": "404 Error",
+        "path": "/404"
+      },
+      {
+        "name": "Cart",
+        "path": "/cart"
+      },
+      {
+        "name": "Wishlist",
+        "path": "/wishlist"
+      }
+
+    ]
+  },
+
+
+
   {
     "title": "Categories",
     "navLinks": [

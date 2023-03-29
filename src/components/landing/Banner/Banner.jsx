@@ -24,8 +24,13 @@ export const Banner = () => {
           style={{ width: '80%', marginRight: '100px' }}
         />
       </div>
+
+      
+
       {/* <!-- MAIN BLOCK EOF --> */}
     </>
   );
 };
+
+
 

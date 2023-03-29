@@ -58,8 +58,7 @@ export const Footer = () => {
               <span className='footer-nav__col-title'>Contact</span>
               <ul>
                 <li>
-                  <i className='icon-map-pin'></i> 27 Division St, New York, NY
-                  10002, USA
+                  <i className='icon-map-pin'></i> The cupboard under the Stairs, 4, Privet Drive, Little Whinging, Surrey, England
                 </li>
                 <li>
                   <i className='icon-smartphone'></i>
@@ -70,13 +69,13 @@ export const Footer = () => {
                 </li>
                 <li>
                   <i className='icon-mail'></i>
-                  <a href='mailto:info@beshop.com'>info@beshop.com</a>
+                  <a href='mailto:info@starscape.com'>info@starscape.com</a>
                 </li>
               </ul>
             </div>
           </div>
           <div className='footer-copy'>
-            <span>&copy; All rights reserved. BeShop 2020</span>
+            <span>&copy; All rights reserved. Starscape 2023</span>
           </div>
         </div>
       </footer>

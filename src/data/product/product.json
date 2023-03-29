@@ -7,8 +7,8 @@
     "isSale": true,
     "isNew": false,
     "image": "/assets/img/product-img2.jpg",
-    "category": "makeup",
-    "filterItems": ["nail", "skin", "makeup", "spa", "perfume", "hair"],
+    "category": "telescopes",
+    "filterItems": [],
     "isStocked": true,
     "productNumber": "IN1203",
     "imageGallery": [
@@ -26,8 +26,8 @@
       "#FDB7A8",
       "#FFA08A"
     ],
-    "content": "content description",
-    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi beatae provident ipsum omnis dolor sapiente maiores reiciendis exercitationem earum deleniti, reprehenderit iste ipsa saepe. Consectetur non et excepturi molestias esse?",
+    "content": "",
+    "description": "",
     "reviews": [
       {
         "author": {
@@ -36,7 +36,7 @@
         },
         "reviewDate": "July 23, 2020",
         "rating": 4,
-        "content": "I am grateful to the employees of BeShop for the quality products that I have been using for more than a year, try to work at this level in the future. Thank you"
+        "content": " the future. Thank you"
       },
       {
         "author": {
@@ -66,8 +66,8 @@
     "isSale": true,
     "isNew": false,
     "image": "/assets/img/product-img1.jpg",
-    "category": "spa",
-    "filterItems": ["makeup", "spa", "perfume", "hair"],
+    "category": "Collectibles",
+    "filterItems": [],
 
     "isStocked": true,
     "productNumber": "IN1203",
@@ -87,7 +87,7 @@
       "#FDB7A8",
       "#FFA08A"
     ],
-    "content": "Universal foundation masks skin imperfections and gives it a matte finish, remaining completely invisible on the face. The foundation is suitable for any skin type. Thanks to a unique combination of pigments, the foundation adapts perfectly to even the smallest features of skin tone, creating an even and natural tone",
+    "content": "",
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi beatae provident ipsum omnis dolor sapiente maiores reiciendis exercitationem earum deleniti, reprehenderit iste ipsa saepe. Consectetur non et excepturi molestias esse?",
     "reviews": [
       {
