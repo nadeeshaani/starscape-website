@@ -1,2 +1,6 @@
-package com.example.backend.Model;public enum Role {
+package com.example.backend.Model;
+
+public enum Role {
+    USER,
+    ADMIN
 }

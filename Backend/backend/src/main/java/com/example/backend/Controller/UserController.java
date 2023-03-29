@@ -20,8 +20,6 @@ public class UserController {
     //Adding new users
     @PostMapping("/add")
     public ResponseEntity<UserDTO> addUser(@RequestBody UserDTO userDTO){
-        Date date = new Date();
-        userDTO.setDate(date);
         UserDTO addedUser = this.userService.addUser(userDTO);
         return new ResponseEntity<UserDTO>(addedUser, HttpStatus.CREATED);
     }
@@ -50,3 +48,4 @@ public class UserController {
 
 }
 
+//todo have to change this class endpoints

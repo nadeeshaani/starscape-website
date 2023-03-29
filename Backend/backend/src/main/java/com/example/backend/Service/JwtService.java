@@ -1,4 +1,4 @@
-package com.example.backend.Configuration;
+package com.example.backend.Service;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -9,7 +9,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.security.Key;
-import java.util.Base64;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,7 +16,7 @@ import java.util.function.Function;
 
 @Service
 public class JwtService {
-    private static final String SECRET_KEY = "3677397A24432646294A404E635266546A576E5A7234753778214125442A472D";
+    private static final String SECRET_KEY = "2646294A404E635266556A586E327235753778214125442A472D4B6150645367";
 
     public String extractUsername(String token){
         return extractClaim(token, Claims::getSubject);

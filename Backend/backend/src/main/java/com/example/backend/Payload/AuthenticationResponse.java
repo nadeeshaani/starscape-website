@@ -1,4 +1,4 @@
-package com.example.backend.Controller;
+package com.example.backend.Payload;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

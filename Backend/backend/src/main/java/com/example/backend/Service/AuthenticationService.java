@@ -1,8 +1,10 @@
-package com.example.backend.Controller;
+package com.example.backend.Service;
 
-import com.example.backend.Configuration.JwtService;
 import com.example.backend.Model.Role;
 import com.example.backend.Model.User;
+import com.example.backend.Payload.AuthenticationRequest;
+import com.example.backend.Payload.AuthenticationResponse;
+import com.example.backend.Payload.UserDTO;
 import com.example.backend.Repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -18,14 +20,12 @@ public class AuthenticationService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
-    public AuthenticationResponse register(RegisterRequest request) {
+    public AuthenticationResponse register(UserDTO request) {
         var user = User.builder()
-                .user_address(request.getUser_address())
-                .user_contact(request.getUser_contact())
+                .first_name(request.getFirst_name())
+                .last_name(request.getLast_name())
                 .email(request.getEmail())
-                .user_gender(request.getUser_gender())
-                .user_name(request.getUser_name())
-                .user_password(passwordEncoder.encode(request.getUser_password()))
+                .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.USER)
                 .build();
         userRepository.save(user);
