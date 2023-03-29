@@ -17,12 +17,10 @@ export const AboutDiscount = () => {
               account all consumer.
             </p>
             <p className='discount-info__sm'>
-              Forming the range of stores, we, above all, strive not only to
-              meet the format of "home shop", offering each customer the most
-              basic household goods, but also to create a unique space of beauty
-              and care. BeShope stores offer their customers the widest and
-              highest quality selection of products from world-renowned
-              manufacturers.
+             Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+             Corporis quasi tempore aliquam cumque, adipisci voluptates 
+             magnam voluptatum molestiae nihil optio reiciendis quam excepturi reprehenderit magni odit, 
+             eritatis error repellat quibusdam.
             </p>
             <Link href='/shop'>
               <a className='btn'>Shop now</a>

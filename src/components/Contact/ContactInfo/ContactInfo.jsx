@@ -11,15 +11,11 @@ export const ContactInfo = () => {
             <div className='contacts-info__text'>
               <h4>We take care of you</h4>
               <p>
-                Email us if you have any questions, we will be sure to contact
-                you and find a solution. Also, our managers will help you choose
-                the product that suits you best, at the best price. From year to
-                year, the BeShop network develops and improves, taking into
-                account all consumer needs and market trends. But for us, the
-                concern remains that when coming to the BeShop store, customers
-                do not have questions about the convenience and comfort of
-                shopping, product quality and the level of professionalism of
-                sales consultants.
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+                Ex sed quam commodi. Laboriosam quidem molestiae tempora, 
+                aliquid numquam accusamus qui autem ipsum nisi similique eos voluptas deserunt sit ab quisquam?
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus veritatis velit eveniet quis unde.
+                 In quia est voluptatibus magnam distinctio non facere temporibus officiis, molestiae ad, pariatur unde rerum nemo!
               </p>
             </div>
             <div className='contacts-info__social'>

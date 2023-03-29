@@ -7,8 +7,8 @@ export const Banner = () => {
       <div className='main-block load-bg'>
         <div className='wrapper'>
           <div className='main-block__content'>
-            <h1 className='main-text' style={{ fontSize: '4rem'}}>S T A R S C A P E</h1>
-            <p style={{ fontSize: '1rem' }}>
+            <h1 className='main-text' style={{ fontSize: '4.5rem'}}>S T A R S C A P E</h1>
+            <p style={{ fontSize: '1.3rem' }}>
               "So much of universe, and so little time." <br></br>Dive into the starscape now...
             </p>
 
