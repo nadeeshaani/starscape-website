@@ -1,14 +1,7 @@
+## Follow the following steps to run starscape
 
+1. `npm install -g next`
 
-## Preview
+2. `npm install`
 
-```
-Run production build with:
-
-bash
-npm run build
-npm run start
-# or
-yarn build
-yarn start
-```
+3. `npm run dev`
