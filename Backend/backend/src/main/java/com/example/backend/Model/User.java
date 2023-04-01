@@ -25,6 +25,9 @@ public class User implements UserDetails{
     private String email;
     private String password;
 
+    @OneToOne(mappedBy = "user")
+    private Cart cart;
+
     @Enumerated(EnumType.STRING)
     private Role role;
 
