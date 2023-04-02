@@ -93,4 +93,16 @@ public class OrderServiceImpl implements OrderService{
 
         return this.modelMapper.map(save, OrderDTO.class);
     }
+    @Override
+    public void cancelOrder(int order_id) {
+        Order_ order = this.orderRepository.findById(order_id).orElseThrow(()-> new ResourceNotFoundException("Order not found"));
+        this.orderRepository.delete(order);
+    }
+
+    @Override
+    public OrderDTO findOrderById(int order_id) {
+        Order_ order = this.orderRepository.findById(order_id).orElseThrow(()-> new ResourceNotFoundException("Order not found"));
+        return this.modelMapper.map(order, OrderDTO.class);
+    }
+
 }

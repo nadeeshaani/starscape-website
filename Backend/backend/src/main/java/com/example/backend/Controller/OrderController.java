@@ -25,6 +25,19 @@ public class OrderController {
         OrderDTO order = this.orderService.orderCreate(orderRequest, email);
         return new ResponseEntity<OrderDTO>(order, HttpStatus.CREATED);
     }
+    //cancel order by id
+    @DeleteMapping("/delete")
+    public ResponseEntity<?> cancelOrderById(@RequestParam int order_id){
+        this.orderService.cancelOrder(order_id);
+        return new ResponseEntity<ApiResponse>(new ApiResponse("Order canceled",true),HttpStatus.OK);
+    }
+
+    //find order by id
+    @GetMapping("/viewById")
+    public ResponseEntity<OrderDTO> findOrderById(@RequestParam int order_id){
+        OrderDTO order = this.orderService.findOrderById(order_id);
+        return new ResponseEntity<OrderDTO>(order, HttpStatus.ACCEPTED);
+    }
 
 
 }
