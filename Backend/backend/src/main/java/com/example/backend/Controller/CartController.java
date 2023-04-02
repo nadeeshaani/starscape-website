@@ -31,4 +31,18 @@ public class CartController {
         CartDTO allCart = this.cartService.getCartAll(principal.getName());
         return new ResponseEntity<CartDTO>(allCart, HttpStatus.ACCEPTED);
     }
+
+    //getting cart by id
+    @GetMapping("/getCartById")
+    public ResponseEntity<CartDTO> getCartById(@RequestParam int cart_id){
+        CartDTO cartById = this.cartService.getCartById(cart_id);
+        return new ResponseEntity<CartDTO>(cartById, HttpStatus.OK);
+    }
+
+    //removing cart item from cart
+    @DeleteMapping("/delete")
+    public ResponseEntity<CartDTO> deleteCartItemFromCart(@RequestParam int product_id, Principal principal){
+        CartDTO remove = this.cartService.removeCartItemFromCart(principal.getName(), product_id);
+        return new ResponseEntity<CartDTO>(remove, HttpStatus.UPGRADE_REQUIRED);
+    }
 }
