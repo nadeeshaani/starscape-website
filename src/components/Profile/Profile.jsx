@@ -62,7 +62,7 @@ export const Profile = () => {
         </div>
         <img
           className='promo-video__decor js-img'
-          src='/assets/img/promo-video__decor.jpg'
+          src='/assets/img/promo-video__decor.png'
           alt=''
         />
       </div>
