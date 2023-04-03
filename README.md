@@ -1,4 +1,4 @@
-## Follow the following steps to run starscape
+## Follow the following steps to run starscape front-end
 
 1. `npm install -g next`
 
