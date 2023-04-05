@@ -1,7 +1,5 @@
 package com.example.backend.Service;
 
-import com.example.backend.Email.EmailSender;
-import com.example.backend.Email.EmailValidator;
 import com.example.backend.Model.Role;
 import com.example.backend.Model.Token.Token;
 import com.example.backend.Model.Token.TokenType;
@@ -20,7 +18,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.function.BiPredicate;
 
 @Service
 @RequiredArgsConstructor
@@ -38,7 +35,7 @@ public class AuthenticationService {
     @Autowired
     private final EmailValidator emailValidator;
     @Autowired
-    private final EmailSender emailSender;
+    private final EmailService emailService;
 
     public AuthenticationResponse register(UserDTO request) {
         var user = User.builder()
@@ -59,7 +56,7 @@ public class AuthenticationService {
         var jwtToken = jwtService.generateToken(user);
         saveUserToken(savedUser, jwtToken);
         String link = "http://localhost:8090/api/v1/auth/confirm?token=" + jwtToken;
-        emailSender.send(
+        emailService.send(
                 request.getEmail(),
                 buildEmail(request.getFirst_name(), link));
         return AuthenticationResponse.builder()
@@ -88,6 +85,7 @@ public class AuthenticationService {
         });
         tokenRepository.saveAll(validUserTokens);
     }
+
     @Transactional
     public String confirmToken(String token) {
         Token confirmationToken = tokenRepository
@@ -190,6 +188,12 @@ public class AuthenticationService {
         );
         var user = userRepository.findByEmail(request.getEmail())
                 .orElseThrow();
+
+        //Optional, recheck this portion. Should it belong to authentication?
+//        if (user.getRole() == Role.USER && !user.isVerified()) {
+//            throw new RuntimeException("User is not verified");
+//        }
+
         var jwtToken = jwtService.generateToken(user);
         revokeAllUserTokens(user);
         saveUserToken(user, jwtToken);
@@ -197,4 +201,6 @@ public class AuthenticationService {
                 .token(jwtToken)
                 .build();
     }
+
+
 }
