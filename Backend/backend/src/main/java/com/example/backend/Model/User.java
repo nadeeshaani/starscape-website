@@ -1,5 +1,6 @@
 package com.example.backend.Model;
 
+import com.example.backend.Model.Token.Token;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -30,6 +31,12 @@ public class User implements UserDetails{
 
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    //Properties for Email verification
+    private boolean verified;
+
+    @OneToMany(mappedBy = "user")
+    private List<Token> tokens;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
