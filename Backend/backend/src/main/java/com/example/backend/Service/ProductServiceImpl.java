@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -125,6 +124,15 @@ public class ProductServiceImpl implements ProductService{
 
         List<Product> productsByCategory = this.productRepository.findByCategory(category);
         return productsByCategory.stream().map(product -> toDTO(product)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ProductDTO> search(String keyword) {
+        List<Product> products = this.productRepository.findAll();
+        List<Product> productsSearched = products.stream()
+                .filter(p -> p.getProduct_name().contains(keyword) || p.getProduct_description().contains(keyword))
+                .collect(Collectors.toList());
+        return productsSearched.stream().map(product -> toDTO(product)).collect(Collectors.toList());
     }
 
 }

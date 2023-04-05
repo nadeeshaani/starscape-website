@@ -60,4 +60,11 @@ public class ProductController {
         return new ResponseEntity<List<ProductDTO>>(productsByCategory, HttpStatus.ACCEPTED);
     }
 
+    //Search products by keyword
+    @GetMapping("/search")
+    public ResponseEntity<List<ProductDTO>> search(@RequestParam String keyword){
+        List<ProductDTO> productsByCategory = productService.search(keyword);
+        return new ResponseEntity<List<ProductDTO>>(productsByCategory, HttpStatus.ACCEPTED);
+    }
+
 }
