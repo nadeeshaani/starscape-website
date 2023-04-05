@@ -21,13 +21,13 @@ public class EmailServiceImpl implements EmailService {
 
     @Override
     @Async
-    public void send(String to, String email) {
+    public void send(String to, String email, String subject) {
         try {
             MimeMessage mimeMessage = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "utf-8");
             helper.setText(email, true);
             helper.setTo(to);
-            helper.setSubject("Hi, please verify your Starscape account");
+            helper.setSubject(subject);
             helper.setFrom("gimhanif44@gmail.com");
             mailSender.send(mimeMessage);
         } catch (MessagingException e) {
@@ -35,4 +35,5 @@ public class EmailServiceImpl implements EmailService {
             throw new IllegalStateException("failed to send email");
         }
     }
+
 }

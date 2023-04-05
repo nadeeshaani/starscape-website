@@ -31,6 +31,9 @@ public class OrderServiceImpl implements OrderService{
     @Autowired
     ModelMapper modelMapper;
 
+    @Autowired
+    private EmailService emailService;
+
     @Override
     public OrderDTO orderCreate(OrderRequest orderRequest, String email) {
         //fetch user
@@ -84,6 +87,11 @@ public class OrderServiceImpl implements OrderService{
         Order_ save;
         if(order.getOrder_amount() > 0){
             save = this.orderRepository.save(order);
+            emailService.send(
+                    user.getEmail(),
+                    buildEmail(order),
+                    "Order Confirmation");
+
             //cart is cleared after order created
             cart.getItems().clear();
             this.cartRepository.save(cart);
@@ -93,6 +101,44 @@ public class OrderServiceImpl implements OrderService{
 
         return this.modelMapper.map(save, OrderDTO.class);
     }
+
+
+    private String buildEmail(Order_ order) {
+        return "<!DOCTYPE html>\n" +
+                "<html>\n" +
+                "  <head>\n" +
+                "    <title>Order Confirmation</title>\n" +
+                "    <style>\n" +
+                "      body{font:16px/1.5 Arial,sans-serif;margin:0}\n" +
+                "      h1{font:bold 28px Arial,sans-serif;text-align:center}\n" +
+                "      table{border-collapse:collapse;margin-bottom:20px;width:100%}\n" +
+                "      th,td{border:1px solid #ddd;padding:8px;text-align:left}\n" +
+                "      th{background:#f2f2f2;font-weight:bold}\n" +
+                "      tfoot tr:first-child{font-weight:bold}\n" +
+                "      tfoot td:first-child{text-align:right}\n" +
+                "      p{margin-bottom:10px}\n" +
+                "    </style>\n" +
+                "  </head>\n" +
+                "  <body>\n" +
+                "    <h1>Order Confirmation</h1>\n" +
+                "    <p>Dear"+order.getUser().getFirst_name()+",</p>\n" +
+                "    <p>Thank you for placing your order with us. Your order details are as follows:</p>\n" +
+                "    <table>\n" +
+                "      <thead><tr><th>Item</th><th>Quantity</th><th>Price</th></tr></thead>\n" +
+                "      <tbody th:each=\"item : ${order.items}\"><tr><td th:text=\"${item.name}\"></td><td th:text=\"${item.quantity}\"></td><td th:text=\"${item.price}\"></td></tr></tbody>\n" +
+                "      <tfoot><tr><td colspan=\"2\">Subtotal:</td><td th:text=\"${order.subtotal}\"></td></tr><tr><td colspan=\"2\">Shipping:</td><td th:text=\"${order.shippingCost}\"></td></tr><tr><td colspan=\"2\">Tax:</td><td th:text=\"${order.tax}\"></td></tr><tr><td colspan=\"2\">Total:</td><td th:text=\"${order.total}\"></td></tr></tfoot>\n" +
+                "    </table>\n" +
+                "    <p>Your order will be shipped to:</p>\n" +
+                "    <p th:text=\"${order.shippingAddress}\"></p>\n" +
+                "    <p>Estimated delivery date: [[${order.deliveryDate}]]</p>\n" +
+                "    <p>Thank you for your business!</p>\n" +
+                "    <p>Sincerely,<br>[Your Company Name]</p>\n" +
+                "  </body>\n" +
+                "</html>\n";
+    }
+
+
+
     @Override
     public void cancelOrder(int order_id) {
         Order_ order = this.orderRepository.findById(order_id).orElseThrow(()-> new ResourceNotFoundException("Order not found"));
