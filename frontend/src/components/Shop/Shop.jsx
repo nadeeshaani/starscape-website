@@ -16,17 +16,6 @@ const options = [
   { value: 'minToHigh', label: 'From cheap to expensive' },
 ];
 export const Shop = () => {
-
-  ///Search code
-  const [searchTerm, setSearchTerm] = useState('');
-  const [searchResult, setSearchResult] = useState([]);
-
-  
-  
-
-
-  //---
-
   const allProducts = [...productData];
   const [categories, setCategories] = useState([]);
  
@@ -52,38 +41,20 @@ export const Shop = () => {
   const categoryId =1;
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
-    const categoryId = urlParams.get('categoryId') || 1;
+     categoryId = urlParams.get('categoryId') || 1;
     const fetchProductsByCategory = async () => {
       const response = await fetch(`http://localhost:8090/product/viewByCategory?category_id=${categoryId}`);
       const data = await response.json();
       setProducts(data);
-<<<<<<< HEAD
     };
   
     fetchProductsByCategory();
-  }, []);
-  
-=======
-    };fetchProductsByCategory();
   }, [categoryId]);
->>>>>>> 1fafc21ee6ef81fb1d5361e6916b300973225ae4
   console.log(products);
   
-  var keyword;
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-     keyword = urlParams.get('keyword') ;
-     if (keyword) {
-      const handleSearch = async () => {
-        const response = await fetch(`http://localhost:8090/product/search?keyword=${keyword}`);
-        const data = await response.json();
-        setProducts(data);
-      };
-      handleSearch();
-    }
-    }, [keyword]);
 
-  
+
+
   
 
   useEffect(() => {
@@ -125,27 +96,21 @@ export const Shop = () => {
           <div className='shop-content'>
             {/* <!-- Shop Aside --> */}
             <div className='shop-aside'>
-            <div className='box-field'>
-            <form>
-              <div className='box-field__row box-field__row-search'>
-                <div className='box-field'>
-                  <input
-                    type="text" value={searchTerm} onChange={e => setSearchTerm(e.target.value)} />
-                </div>
-                
-                <a href={`?keyword=${searchTerm}`}><i className='icon-search'></i></a>
-                
+              <div className='box-field box-field__search'>
+                <input
+                  type='search'
+                  className='form-control'
+                  placeholder='Search'
+                />
+                <i className='icon-search'></i>
               </div>
-            </form>
-                </div>
-                
               <div className='shop-aside__item'>
                 <span className='shop-aside__item-title'>Categories</span>
                 <ul>
                 {categories.map(category => (
                       <li key={category.category_id}>
                         <a href={`?categoryId=${category.category_id}`}>
-                          {category.category_name} 
+                          {category.category_name} <span>({/* insert count here */})</span>
                         </a>
                       </li>
                     ))}

@@ -6,23 +6,23 @@ import React, { useState } from 'react';
 export const Registration = () => {
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const response = await fetch('http://localhost:8090/api/v1/auth/register', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        first_name: firstName,
-        last_name: lastName,
-        email,
-        password,
-      }),
-    });
-    const data = await response.json();
-    console.log(data);
-    alert('check your email for email verification!');
-    router.push('/login');
-  };
-  
+  e.preventDefault();
+  const response = await fetch('http://localhost:8090/api/v1/auth/register', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      first_name: firstName,
+      last_name: lastName,
+      email,
+      password,
+    }),
+  });
+  const data = await response.json();
+  console.log(data);
+  alert('check your email for email verification!');
+  router.push('/login');
+};
+
 
 const [firstName, setFirstName] = useState('');
 const [lastName, setLastName] = useState('');
