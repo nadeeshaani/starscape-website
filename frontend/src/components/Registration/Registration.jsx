@@ -1,7 +1,35 @@
 import { SocialLogin } from 'components/shared/SocialLogin/SocialLogin';
 import router from 'next/router';
+import React, { useState } from 'react';
+
 
 export const Registration = () => {
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const response = await fetch('http://localhost:8090/api/v1/auth/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        first_name: firstName,
+        last_name: lastName,
+        email,
+        password,
+      }),
+    });
+    const data = await response.json();
+    console.log(data);
+    alert('check your email for email verification!');
+    router.push('/login');
+  };
+  
+
+const [firstName, setFirstName] = useState('');
+const [lastName, setLastName] = useState('');
+const [email, setEmail] = useState('');
+const [password, setPassword] = useState('');
+
+
   return (
     <>
       {/* <!-- BEGIN REGISTRATION --> */}
@@ -13,50 +41,53 @@ export const Registration = () => {
               backgroundImage: `url('/assets/img/registration-form__bg.png')`,
             }}
           >
-            <form>
+           <form onSubmit={handleSubmit}>
+
               <h3>register now</h3>
               <SocialLogin />
 
               <div className='box-field__row'>
                 <div className='box-field'>
                   <input
-                    type='text'
-                    className='form-control'
-                    placeholder='Enter your name'
-                  />
+                        type='text'
+                        className='form-control'
+                        placeholder='Enter your name'
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)}
+                      />
                 </div>
                 <div className='box-field'>
-                  <input
+                <input
                     type='text'
                     className='form-control'
                     placeholder='Enter your last name'
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
                   />
                 </div>
               </div>
               <div className='box-field__row'>
+               
                 <div className='box-field'>
-                  <input
-                    type='tel'
-                    className='form-control'
-                    placeholder='Enter your phone'
-                  />
-                </div>
-                <div className='box-field'>
-                  <input
-                    type='email'
-                    className='form-control'
-                    placeholder='Enter your email'
-                  />
+                <input
+                type='email'
+                className='form-control'
+                placeholder='Enter your email'
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />  
                 </div>
               </div>
               <div className='box-field__row'>
                 <span>password</span>
                 <div className='box-field'>
                   <input
-                    type='password'
-                    className='form-control'
-                    placeholder='Enter your password'
-                  />
+                type='password'
+                className='form-control'
+                placeholder='Enter your password'
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
                 </div>
                 <div className='box-field'>
                   <input
@@ -80,6 +111,9 @@ export const Registration = () => {
                   <a onClick={() => router.push('/login')}>Log in</a>
                 </span>
               </div>
+
+              
+
             </form>
           </div>
         </div>

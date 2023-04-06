@@ -41,7 +41,7 @@ export const Shop = () => {
   const categoryId =1;
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
-     categoryId = urlParams.get('categoryId') || 1;
+    const categoryId = urlParams.get('categoryId') || 1;
     const fetchProductsByCategory = async () => {
       const response = await fetch(`http://localhost:8090/product/viewByCategory?category_id=${categoryId}`);
       const data = await response.json();
@@ -49,7 +49,8 @@ export const Shop = () => {
     };
   
     fetchProductsByCategory();
-  }, [categoryId]);
+  }, []);
+  
   console.log(products);
   
 
