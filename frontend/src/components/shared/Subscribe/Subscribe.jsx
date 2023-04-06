@@ -13,21 +13,20 @@ export const Subscribe = () => {
               />
             </div>
             <form>
-              <h3 style={{color: 'white'}}>Stay in touch</h3>
-              <p style={{color: 'white'}}>Subscribe to Starscape newsletter</p>
-              <div className='box-field__row'>
-                <div className='box-field'>
-                  <input
-                    type='email'
-                    className='form-control'
-                    placeholder='Enter your email'
-                  />
-                </div>
-                <button type='submit' className='btn'>
-                  subscribe
-                </button>
-              </div>
-            </form>
+  <h2 style={{color: 'white'}}>Stay in touch</h2>
+  <p style={{color: 'white'}}></p>
+  <div className='box-field__row'>
+    <div className='box-field'>
+      <h4>Visit Starscape blog</h4>
+    </div>
+    <a href='https://www.nasa.gov/' target='_blank' rel='noopener noreferrer'>
+      <button type='button' className='btn'>
+        Visit now
+      </button>
+    </a>
+  </div>
+</form>
+
           </div>
         </div>
       </div>

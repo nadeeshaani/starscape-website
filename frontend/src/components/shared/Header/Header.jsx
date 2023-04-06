@@ -75,13 +75,6 @@ export const Header = () => {
                 </Link>
               </li>
               <li>
-                <Link href='/wishlist'>
-                  <a>
-                    <i className='icon-heart'style={{color: 'white'}}></i>
-                  </a>
-                </Link>
-              </li>
-              <li>
                 <Link href='/cart'>
                   <a>
                     <i className='icon-cart'style={{color: 'white'}}></i>

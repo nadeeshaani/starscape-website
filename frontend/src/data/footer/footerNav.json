@@ -51,12 +51,7 @@
       {
         "name": "Cart",
         "path": "/cart"
-      },
-      {
-        "name": "Wishlist",
-        "path": "/wishlist"
       }
-
     ]
   },
 
