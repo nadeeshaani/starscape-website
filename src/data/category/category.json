@@ -1,0 +1,32 @@
+[
+  {
+    "categoryId": "spa",
+    "name": "TELESCOPES",
+    "image": "/assets/img/top-categories-img1.jpg"
+  },
+  {
+    "categoryId": "nails",
+    "name": "COLLECTIBLES",
+    "image": "/assets/img/top-categories-img2.jpg"
+  },
+  {
+    "categoryId": "perfume",
+    "name": "ASTROPHOTOGRAPHY",
+    "image": "/assets/img/top-categories-img3.jpg"
+  },
+  {
+    "categoryId": "makeup",
+    "name": "ASTRONOMY BOOKS",
+    "image": "/assets/img/top-categories-img4.jpg"
+  },
+  {
+    "categoryId": "skin",
+    "name": "Skin",
+    "image": "/assets/img/top-categories-img5.jpg"
+  },
+  {
+    "categoryId": "hair",
+    "name": "Hair",
+    "image": "/assets/img/top-categories-img6.jpg"
+  }
+]
