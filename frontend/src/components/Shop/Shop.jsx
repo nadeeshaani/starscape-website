@@ -164,18 +164,7 @@ export const Shop = () => {
                   />
                 </div>
               </div>
-              <div className='shop-aside__item'>
-                <span className='shop-aside__item-title'>You have viewed</span>
-                {recentlyViewed.map((data) => (
-                  <AsideItem key={data.id} aside={data} />
-                ))}
-              </div>
-              <div className='shop-aside__item'>
-                <span className='shop-aside__item-title'>Top 3 for today</span>
-                {todaysTop.map((data) => (
-                  <AsideItem key={data.id} aside={data} />
-                ))}
-              </div>
+            
             </div>
             {/* <!-- Shop Main --> */}
             <div className='shop-main'>
