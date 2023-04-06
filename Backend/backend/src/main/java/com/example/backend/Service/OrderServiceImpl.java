@@ -81,7 +81,7 @@ public class OrderServiceImpl implements OrderService{
         order.setPayment_status("NOT PAID");
         order.setUser(user);
         order.setOrderItem(orderItems);
-        order.setOrder_amount(totalOrderPrice.get());
+        order.setOrder_amount(Math.round(totalOrderPrice.get() * 100.0) / 100.0);
         order.setOrder_created(new Date());
 
         Order_ save;
@@ -104,39 +104,31 @@ public class OrderServiceImpl implements OrderService{
 
 
     private String buildEmail(Order_ order) {
-        return "<!DOCTYPE html>\n" +
-                "<html>\n" +
-                "  <head>\n" +
-                "    <title>Order Confirmation</title>\n" +
-                "    <style>\n" +
-                "      body{font:16px/1.5 Arial,sans-serif;margin:0}\n" +
-                "      h1{font:bold 28px Arial,sans-serif;text-align:center}\n" +
-                "      table{border-collapse:collapse;margin-bottom:20px;width:100%}\n" +
-                "      th,td{border:1px solid #ddd;padding:8px;text-align:left}\n" +
-                "      th{background:#f2f2f2;font-weight:bold}\n" +
-                "      tfoot tr:first-child{font-weight:bold}\n" +
-                "      tfoot td:first-child{text-align:right}\n" +
-                "      p{margin-bottom:10px}\n" +
-                "    </style>\n" +
-                "  </head>\n" +
-                "  <body>\n" +
-                "    <h1>Order Confirmation</h1>\n" +
-                "    <p>Dear"+order.getUser().getFirst_name()+",</p>\n" +
-                "    <p>Thank you for placing your order with us. Your order details are as follows:</p>\n" +
-                "    <table>\n" +
-                "      <thead><tr><th>Item</th><th>Quantity</th><th>Price</th></tr></thead>\n" +
-                "      <tbody th:each=\"item : ${order.items}\"><tr><td th:text=\"${item.name}\"></td><td th:text=\"${item.quantity}\"></td><td th:text=\"${item.price}\"></td></tr></tbody>\n" +
-                "      <tfoot><tr><td colspan=\"2\">Subtotal:</td><td th:text=\"${order.subtotal}\"></td></tr><tr><td colspan=\"2\">Shipping:</td><td th:text=\"${order.shippingCost}\"></td></tr><tr><td colspan=\"2\">Tax:</td><td th:text=\"${order.tax}\"></td></tr><tr><td colspan=\"2\">Total:</td><td th:text=\"${order.total}\"></td></tr></tfoot>\n" +
-                "    </table>\n" +
-                "    <p>Your order will be shipped to:</p>\n" +
-                "    <p th:text=\"${order.shippingAddress}\"></p>\n" +
-                "    <p>Estimated delivery date: [[${order.deliveryDate}]]</p>\n" +
-                "    <p>Thank you for your business!</p>\n" +
-                "    <p>Sincerely,<br>[Your Company Name]</p>\n" +
-                "  </body>\n" +
-                "</html>\n";
-    }
+        String orderItemsList = "";
+        Set<OrderItem> orderItems = order.getOrderItem();
+        for (OrderItem orderItem : orderItems) {
+            String productName = orderItem.getProduct().getProduct_name();
+            int quantity = orderItem.getProduct_quantity();
+            double totalProductPrice = orderItem.getTotal_product_price(),rou;
+            orderItemsList += "<tr><td style='padding: 10px; border: 1px solid #ddd;'>" + productName + "</td><td style='padding: 10px; border: 1px solid #ddd;'>" + quantity + "</td><td style='padding: 10px; border: 1px solid #ddd;'>" + totalProductPrice + "</td></tr>";
+        }
 
+        String emailBody = "<html><body>"
+                + "<div style='font-family: Arial, sans-serif;'>"
+                + "<div style='background-color: #007bff; color: #fff; padding: 10px;'><h2>Order Confirmation</h2></div>"
+                + "<div style='padding: 20px;'>"
+                + "<p>Dear " + order.getUser().getFirst_name() + ",</p>"
+                + "<p>Thank you for placing your order with us. Below are the details of your order:</p>"
+                + "<table style='border-collapse: collapse; width: 100%;'><tr style='background-color: #f2f2f2;'><th style='padding: 10px; border: 1px solid #ddd;'>Product</th><th style='padding: 10px; border: 1px solid #ddd;'>Quantity</th><th style='padding: 10px; border: 1px solid #ddd;'>Total Price</th></tr>"
+                + orderItemsList
+                + "<tr><td colspan='2' style='text-align: right; padding: 10px; border: 1px solid #ddd;'><strong>Total Order Amount:</strong></td><td style='padding: 10px; border: 1px solid #ddd;'><strong>" + order.getOrder_amount() + "</strong></td></tr>"
+                + "</table>"
+                + "<p>Your order is being processed and will be delivered soon.</p>"
+                + "</div></div>"
+                + "</body></html>";
+
+        return emailBody;
+    }
 
 
     @Override

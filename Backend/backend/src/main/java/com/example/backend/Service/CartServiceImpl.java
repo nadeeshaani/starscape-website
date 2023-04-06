@@ -54,7 +54,7 @@ public class CartServiceImpl implements CartService{
         CartItem cartItem = new CartItem();
         cartItem.setProduct(product);
         cartItem.setQuantity(quantity);
-        double totalprice = product.getProduct_price()*quantity;
+        double totalprice = Math.round(product.getProduct_price()*quantity * 100.0) / 100.0;
         cartItem.setTotalprice(totalprice);
 
         //getting cart from user
