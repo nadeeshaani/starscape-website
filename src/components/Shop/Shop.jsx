@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import Dropdown from 'react-dropdown';
 import { AsideItem } from '../shared/AsideItem/AsideItem';
 
+
 // React Range
 const { createSliderWithTooltip } = Slider;
 const Range = createSliderWithTooltip(Slider.Range);
@@ -16,17 +17,45 @@ const options = [
 ];
 export const Shop = () => {
   const allProducts = [...productData];
+  const [categories, setCategories] = useState([]);
+ 
 
   const [productOrder, setProductOrder] = useState(
     allProducts.sort((a, b) => (a.price < b.price ? 1 : -1))
   );
 
-  const [products, setProducts] = useState([...productOrder]);
+  const [products, setProducts] = useState([]);
   const [filter, setFilter] = useState({ isNew: false, isSale: true });
 
   useEffect(() => {
     setProducts(productOrder);
   }, [productOrder]);
+
+  useEffect(() => {
+    fetch('http://localhost:8090/category/viewAll')
+      .then(response => response.json())
+      .then(data => setCategories(data));
+  }, []);
+
+  
+  const categoryId =1;
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+     categoryId = urlParams.get('categoryId') || 1;
+    const fetchProductsByCategory = async () => {
+      const response = await fetch(`http://localhost:8090/product/viewByCategory?category_id=${categoryId}`);
+      const data = await response.json();
+      setProducts(data);
+    };
+  
+    fetchProductsByCategory();
+  }, [categoryId]);
+  console.log(products);
+  
+
+
+
+  
 
   useEffect(() => {
     if (filter.isNew && filter.isSale) {
@@ -78,31 +107,13 @@ export const Shop = () => {
               <div className='shop-aside__item'>
                 <span className='shop-aside__item-title'>Categories</span>
                 <ul>
-                  <li>
-                    <a href='#'>
-                      Telescopes <span>(37)</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href='#'>
-                      Collectibles <span>(162)</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href='#'>
-                      Astrophotography <span>(153)</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href='#'>
-                      Meteorites <span>(86)</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href='#'>
-                      Astronomy Books <span>(48)</span>
-                    </a>
-                  </li>
+                {categories.map(category => (
+                      <li key={category.category_id}>
+                        <a href={`?categoryId=${category.category_id}`}>
+                          {category.category_name} <span>({/* insert count here */})</span>
+                        </a>
+                      </li>
+                    ))}
               
                 </ul>
               </div>
@@ -172,7 +183,7 @@ export const Shop = () => {
                 </div>
               </div>
               <div className='shop-main__items'>
-                <Products products={paginate?.currentData()} />
+                <Products products={products} />
               </div>
 
               {/* <!-- PAGINATE LIST --> */}
