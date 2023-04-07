@@ -16,6 +16,7 @@ export const Login = () => {
       localStorage.setItem("jwtToken", token);
       // redirect user to the desired page after successful login
       router.push('/shop');
+      alert("You successfully logged in!")
     } catch (err) {
       setError("Invalid email or password");
     }
@@ -40,7 +41,7 @@ export const Login = () => {
                 <input
                   type="text"
                   className="form-control"
-                  placeholder="Enter your email"
+                  placeholder="Enter your email or nickname"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -58,13 +59,13 @@ export const Login = () => {
                   required
                 />
               </div>
-              
+
+            <br />
 
               {/* submit button */}
-              <button className="btn" type="submit" onClick={() => alert('You are successfully logged in!')}>
-              Log in
-            </button>
-
+              <button className="btn" type="submit">
+                log in
+              </button>
 
               {/* error message */}
               {error && <div className="text-danger">{error}</div>}

@@ -76,7 +76,7 @@ export const Header = () => {
             <li>
             <a onClick={() => {
               localStorage.removeItem("jwtToken");
-              router.push('/shop');
+              router.push('/');
               window.alert('You have been logged out.');
             }} style={{ cursor: 'pointer', color: 'white' }}>Log out</a>
           </li>
