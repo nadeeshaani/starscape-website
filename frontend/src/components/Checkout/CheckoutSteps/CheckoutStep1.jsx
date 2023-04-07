@@ -1,10 +1,9 @@
 import Dropdown from 'react-dropdown';
+import { useState } from 'react';
 
-const countries = [
-  { label: 'Country 1', value: '1' },
-  { label: 'Country 2', value: '2' },
-];
+
 export const CheckoutStep1 = ({ onNext }) => {
+  const [payment, setPayment] = useState('credit-card');
   return (
     <>
       {/* <!-- BEING CHECKOUT STEP ONE -->  */}
@@ -12,6 +11,7 @@ export const CheckoutStep1 = ({ onNext }) => {
         <form onClick={(e) => e.preventDefault()}>
           <div className='checkout-form__item'>
             <h4>Info about you</h4>
+            <br />
             <div className='box-field'>
               <input
                 type='text'
@@ -44,68 +44,42 @@ export const CheckoutStep1 = ({ onNext }) => {
             </div>
           </div>
           <div className='checkout-form__item'>
-            <h4>Delivery Info</h4>
-
-            <Dropdown
-              options={countries}
-              className='react-dropdown'
-              onChange={(option) => console.log(option.value)}
-              placeholder='Select a country'
-            />
-            <div className='box-field__row'>
-              <div className='box-field'>
-                <input
-                  type='text'
-                  className='form-control'
-                  placeholder='Enter the city'
-                />
-              </div>
-              <div className='box-field'>
-                <input
-                  type='text'
-                  className='form-control'
-                  placeholder='Enter the address'
-                />
-              </div>
-            </div>
-            <div className='box-field__row'>
-              <div className='box-field'>
-                <input
-                  type='text'
-                  className='form-control'
-                  placeholder='Delivery day'
-                />
-              </div>
-              <div className='box-field'>
-                <input
-                  type='text'
-                  className='form-control'
-                  placeholder='Delivery time'
-                />
-              </div>
-            </div>
-          </div>
-          <div className='checkout-form__item'>
-            <h4>Note</h4>
+            <h4>Delivery Address</h4><br />
             <div className='box-field box-field__textarea'>
               <textarea
                 className='form-control'
-                placeholder='Order note'
+                placeholder='Enter the address where you want us to deliver the item'
               ></textarea>
             </div>
-            <label className='checkbox-box checkbox-box__sm'>
-              <input type='checkbox' />
+
+            
+           
+            
+          </div>
+          <h4>Payment Methods</h4><br />
+          <div
+          className={`checkout-payment__item ${payment === 'cash' && 'active'}`}
+        >
+          <div className='checkout-payment__item-head'>
+            <label onClick={() => setPayment('cash')} className='radio-box'>
+              Cash On Delivery
+              <input type='radio' checked={payment === 'cash'} name='radio' />
               <span className='checkmark'></span>
-              Create an account
+             
+             
             </label>
           </div>
+          
+        </div>
+        
+        
           <div className='checkout-buttons'>
             {/* <button className='btn btn-grey btn-icon'>
               {' '}
               <i className='icon-arrow'></i> back
             </button> */}
             <button onClick={onNext} className='btn btn-icon btn-next'>
-              next <i className='icon-arrow'></i>
+              Confirm your order <i className='icon-arrow'></i>
             </button>
           </div>
         </form>
@@ -113,4 +87,6 @@ export const CheckoutStep1 = ({ onNext }) => {
       {/* <!-- CHECKOUT STEP ONE EOF -->  */}
     </>
   );
+
+  
 };
