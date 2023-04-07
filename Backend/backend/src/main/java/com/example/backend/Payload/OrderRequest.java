@@ -1,5 +1,7 @@
 package com.example.backend.Payload;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 public class OrderRequest {
     private String order_address;
     private int cart_id;

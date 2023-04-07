@@ -4,6 +4,7 @@ import com.example.backend.Model.Order_;
 import com.example.backend.Payload.ApiResponse;
 import com.example.backend.Payload.OrderDTO;
 import com.example.backend.Payload.OrderRequest;
+import com.example.backend.Service.JwtService;
 import com.example.backend.Service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,14 +19,18 @@ import java.security.Principal;
 public class OrderController {
     @Autowired
     private OrderService orderService;
+    @Autowired
+    private JwtService jwtService;
+
 
     //create order
     @PostMapping("/add")
-    public ResponseEntity<OrderDTO> createOrder(@RequestBody OrderRequest orderRequest, Principal principal){
-        String email = principal.getName();
+    public ResponseEntity<OrderDTO> createOrder(@RequestBody OrderRequest orderRequest, @RequestParam("jwtToken") String jwtToken){
+        String email = jwtService.extractUsername(jwtToken);
         OrderDTO order = this.orderService.orderCreate(orderRequest, email);
         return new ResponseEntity<OrderDTO>(order, HttpStatus.CREATED);
     }
+
     //cancel order by id
     @DeleteMapping("/delete")
     public ResponseEntity<?> cancelOrderById(@RequestParam int order_id){
