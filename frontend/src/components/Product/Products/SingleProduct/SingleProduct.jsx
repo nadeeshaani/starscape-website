@@ -7,6 +7,8 @@ export const SingleProduct = ({
   addedInCart,
 }) => {
   const { product_name, product_price,product_description,product_imageName, product_id } = product;
+  const token = localStorage.getItem('jwtToken');
+  const endpointUrl = `http://localhost:8090/cart/add?jwtToken=${token}`;
   return (
     <>
       {/* <!-- BEING SINGLE PRODUCT ITEM --> */}
@@ -28,9 +30,20 @@ export const SingleProduct = ({
                 <i className='icon-heart'></i>
               </button>
               <button
-                disabled={addedInCart}
+                disabled={false}
                 className={`addList ${addedInCart ? 'added' : ''}`}
-                onClick={() => onAddToCart(product_id)}
+                onClick={() => 
+                  fetch(endpointUrl, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ product_id: product_id, quantity: 1 }),
+                  })
+                    .then((res) => res.json())
+                    .then((data) => {
+                      onAddToCart(data);
+                    })
+                    .catch((err) => console.error(err))
+                }
               >
                 <i className='icon-cart'></i>
               </button>
