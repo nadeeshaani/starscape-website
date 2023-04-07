@@ -40,7 +40,7 @@ export const Login = () => {
                 <input
                   type="text"
                   className="form-control"
-                  placeholder="Enter your email or nickname"
+                  placeholder="Enter your email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -58,13 +58,7 @@ export const Login = () => {
                   required
                 />
               </div>
-
-              {/* remember me checkbox */}
-              <label className="checkbox-box checkbox-box__sm">
-                <input type="checkbox" />
-                <span className="checkmark"></span>
-                Remember me
-              </label>
+              
 
               {/* submit button */}
               <button className="btn" type="submit" onClick={() => alert('You are successfully logged in!')}>
