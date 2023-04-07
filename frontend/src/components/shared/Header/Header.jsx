@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { CartContext } from 'pages/_app';
 import { useContext, useEffect, useState } from 'react';
 import { Nav } from './Nav/Nav';
+import { useRouter } from 'next/router';
 
 export const Header = () => {
   const { cart } = useContext(CartContext);
@@ -41,6 +42,10 @@ export const Header = () => {
       enableBodyScroll(document);
     }
   }, [openMenu, height]);
+
+  const jwtToken = typeof window !== "undefined" && localStorage.getItem("jwtToken");
+  const router = useRouter();
+
   return (
     <>
       {/* <!-- BEGIN HEADER --> */}
@@ -60,20 +65,31 @@ export const Header = () => {
             {/* header options */}
             <ul className='header-options'>
                       <li>
-            <Link href='/faq'>
+            <Link href='/shop'>
               <a>
                 <i className='icon-search' style={{color: 'white'}}></i>
               </a>
             </Link>
           </li>
 
-              <li>
-                <Link href='/profile'>
-                  <a>
-                    <i className='icon-user'style={{color: 'white'}}></i>
-                  </a>
-                </Link>
-              </li>
+          {jwtToken ? (
+            <li>
+            <a onClick={() => {
+              localStorage.removeItem("jwtToken");
+              router.push('/shop');
+              window.alert('You have been logged out.');
+            }} style={{ cursor: 'pointer', color: 'white' }}>Log out</a>
+          </li>
+          ) : (
+            <li>
+              <Link href='/login'>
+                <a>
+                  <i className='icon-user' style={{color: 'white'}}></i>
+                </a>
+              </Link>
+            </li>
+          )}
+
               <li>
                 <Link href='/cart'>
                   <a>

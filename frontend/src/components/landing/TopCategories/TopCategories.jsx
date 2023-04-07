@@ -3,15 +3,16 @@ import { SectionTitle } from 'components/shared/SectionTitle/SectionTitle';
 import categoriesData from 'data/category/category';
 
 export const TopCategories = () => {
-  const categories = [...categoriesData].slice(0, 3);
+  const categories = [...categoriesData].slice(0, 4);
   return (
     <>
       {/* <!-- BEGIN TOP CATEGORIES --> */}
-      <section className='top-categories'>
-        <SectionTitle
-          subTitle='Popular collections'
-          title='top categories'
-          body='Fly across the universe by just keeping your feet on the ground.'
+      <section className='Categories'>
+        <br /><br /><br /><br />
+        <SectionTitle 
+          subTitle='Our Collection'
+          title='Categories'
+          body='"Somewhere, something incredible is waiting to be known."'
         />
         <div className='top-categories__items'>
           {<Categories categories={categories} />}

@@ -24,10 +24,7 @@
         "name": "Shop",
         "path": "/shop"
       },
-      {
-        "name": "My Profile",
-        "path": "/profile"
-      },
+
       {
         "name": "Login",
         "path": "/login"

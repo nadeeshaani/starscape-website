@@ -14,13 +14,10 @@ export default function Home() {
   return (
     <Layout>
       <Banner />
-      <Trending />
       <BrandLogo />
       <Discount />
       <Advantage />
       <TopCategories />
-      <Info />
-      <NewArrivals />
       <LatestNews />
       <Subscribe />
     </Layout>

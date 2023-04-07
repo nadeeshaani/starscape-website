@@ -8,6 +8,7 @@ export const BrandLogo = () => {
       <div className='main-logos'>
         {brandLoges.map((logo, index) => (
           <a key={index} href={logo.URL}>
+            <br /><br /><br /><br /><br /><br /><br /><br />
             <img src={logo.logoSrc} className='js-img' alt='' />
           </a>
         ))}

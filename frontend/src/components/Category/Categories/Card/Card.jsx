@@ -3,7 +3,7 @@ import Link from 'next/link';
 export const Card = ({ category }) => {
   const { name, image } = category;
   return (
-    <Link href={`/categories`}>
+    <Link href={`/shop`}>
       <a className='top-categories__item'>
         <img src={image} className='js-img' alt='' />
         <div className='top-categories__item-hover'>
