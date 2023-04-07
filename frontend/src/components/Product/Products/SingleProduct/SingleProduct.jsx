@@ -39,7 +39,7 @@ export const SingleProduct = ({
                     .then((data) => {
                       onAddToCart(data);
                     })
-                    .catch((err) => console.error(err))
+                    .catch((err) => alert("Login before you add to cart"))
                 }
               >
                 <i className='icon-cart'></i>
