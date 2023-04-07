@@ -4,7 +4,7 @@ export const CheckoutStep3 = () => {
       {/* <!-- BEING CHECKOUT STEP Three -->  */}
       <div className='checkout-purchase checkout-form'>
         <h4>
-          BeShop thanks
+          Starscape thanks
           <br />
           you for your purchase!
         </h4>
