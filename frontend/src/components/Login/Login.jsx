@@ -67,9 +67,10 @@ export const Login = () => {
               </label>
 
               {/* submit button */}
-              <button className="btn" type="submit">
-                log in
-              </button>
+              <button className="btn" type="submit" onClick={() => alert('You are successfully logged in!')}>
+              Log in
+            </button>
+
 
               {/* error message */}
               {error && <div className="text-danger">{error}</div>}
