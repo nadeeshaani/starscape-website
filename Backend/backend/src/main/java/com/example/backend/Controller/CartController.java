@@ -23,10 +23,8 @@ public class CartController {
     private JwtService jwtService;
 
     @PostMapping("/add")
-    public ResponseEntity<CartDTO> addToCart(@RequestBody ItemRequest itemRequest, Principal principal){
-        String email = principal.getName();
-        System.out.println(email);
-        CartDTO addItem = this.cartService.addItem(itemRequest,principal.getName());
+    public ResponseEntity<CartDTO> addToCart(@RequestBody ItemRequest itemRequest, @RequestParam("jwtToken") String jwtToken){
+        CartDTO addItem = this.cartService.addItem(itemRequest,jwtService.extractUsername(jwtToken));
         return new ResponseEntity<CartDTO>(addItem, HttpStatus.OK);
     }
 
