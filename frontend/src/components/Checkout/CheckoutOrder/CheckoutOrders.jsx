@@ -1,7 +1,9 @@
 import productData from 'data/product/product';
 import { CartContext } from 'pages/_app';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { Card } from './Card/Card';
+import axios from 'axios';
+
 
 export const CheckoutOrders = () => {
   const { cart } = useContext(CartContext);
@@ -9,6 +11,22 @@ export const CheckoutOrders = () => {
     (total, item) => total + Number(item.price) * Number(item.quantity),
     0
   );
+  
+  useEffect(() => {
+    const token = localStorage.getItem('jwtToken');
+
+    axios.get(`http://localhost:8090/cart/getCart?jwtToken=${token}`)
+      .then(response => {
+        setCart(response.data.items);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }, []);
+
+
+
+  const total_pri = cart.reduce((acc, item) => acc + item.totalprice, 0) ;
 
   return (
     <>
@@ -19,24 +37,9 @@ export const CheckoutOrders = () => {
         ))}
       </div>
       <div className='cart-bottom__total'>
-        <div className='cart-bottom__total-goods'>
-          Goods on
-          <span>${total.toFixed(2)}</span>
-        </div>
-        <div className='cart-bottom__total-promo'>
-          Discount on promo code
-          <span>No</span>
-        </div>
-        <div className='cart-bottom__total-delivery'>
-          Delivery{' '}
-          <span className='cart-bottom__total-delivery-date'>
-            (Aug 28,2020 at 11:30)
-          </span>
-          <span>$30</span>
-        </div>
         <div className='cart-bottom__total-num'>
           total:
-          <span>${(total + 30).toFixed(2)}</span>
+          <span>${(total_pri + 30).toFixed(2)}</span>
         </div>
       </div>
     </>

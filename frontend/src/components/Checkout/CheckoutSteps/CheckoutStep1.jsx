@@ -6,6 +6,7 @@ export const CheckoutStep1 = ({ onNext }) => {
   const [cart, setCart] = useState(null);
   const [address, setAddress] = useState('');
   const [cartId, setCartId] = useState('');
+  
 
 
   const handleAddressChange = (event) => {
