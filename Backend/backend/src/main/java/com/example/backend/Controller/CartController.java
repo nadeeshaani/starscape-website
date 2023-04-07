@@ -3,6 +3,7 @@ package com.example.backend.Controller;
 import com.example.backend.Payload.CartDTO;
 import com.example.backend.Payload.ItemRequest;
 import com.example.backend.Service.CartService;
+import com.example.backend.Service.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,10 +13,14 @@ import java.security.Principal;
 
 @RestController
 @RequestMapping("/cart")
+@CrossOrigin(origins = "http://localhost:3000")
 public class CartController {
 
     @Autowired
     private CartService cartService;
+
+    @Autowired
+    private JwtService jwtService;
 
     @PostMapping("/add")
     public ResponseEntity<CartDTO> addToCart(@RequestBody ItemRequest itemRequest, Principal principal){
@@ -27,8 +32,8 @@ public class CartController {
 
     //getting all carts
     @GetMapping("/getCart")
-    public ResponseEntity<CartDTO> getAllCart(Principal principal){
-        CartDTO allCart = this.cartService.getCartAll(principal.getName());
+    public ResponseEntity<CartDTO> getAllCart(@RequestParam("jwtToken") String jwtToken){
+        CartDTO allCart = this.cartService.getCartAll(jwtService.extractUsername(jwtToken));
         return new ResponseEntity<CartDTO>(allCart, HttpStatus.ACCEPTED);
     }
 

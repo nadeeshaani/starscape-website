@@ -3,11 +3,28 @@ import socialData from 'data/social';
 import { CartContext } from 'pages/_app';
 import { useContext, useEffect, useState } from 'react';
 import Link from 'next/link';
+import axios from 'axios';
+
 
 export const Cart = () => {
   const { cart, setCart } = useContext(CartContext);
   const [count, setCount] = useState(0);
   const socialLinks = [...socialData];
+
+
+  useEffect(() => {
+    const token = localStorage.getItem('jwtToken');
+
+    axios.get(`http://localhost:8090/cart/getCart?jwtToken=${token}`)
+      .then(response => {
+        setCart(response.data.items);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }, []);
+
+
 
   const total = cart.reduce(
     (total, item) => total + Number(item.price) * Number(item.quantity),
