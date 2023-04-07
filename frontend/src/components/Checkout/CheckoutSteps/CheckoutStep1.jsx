@@ -1,5 +1,6 @@
 import Dropdown from 'react-dropdown';
 
+import router from 'next/router';
 import { useState , useEffect} from 'react';
 export const CheckoutStep1 = ({ onNext }) => {
   const [payment, setPayment] = useState('credit-card');
@@ -48,7 +49,10 @@ export const CheckoutStep1 = ({ onNext }) => {
     })
     .then(response => response.json())
     .then(data => console.log(data))
-    .catch(error => console.error(error));
+    .catch(error => {
+      alert("Add items to the cart before placing an order");router.push('/shop');
+
+    } );
   }
 
   const handleConfirmOrder = () => {
