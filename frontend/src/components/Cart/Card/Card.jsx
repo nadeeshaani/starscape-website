@@ -65,10 +65,10 @@ export const Card = ({ cart, onChangeQuantity }) => {
         <div className='cart-table__col'>
           {oldPrice ? (
             <span className='cart-table__price'>
-              ${product_price}
+              Rs.{product_price}
             </span>
           ) : (
-            <span className='cart-table__price'>${product_price}</span>
+            <span className='cart-table__price'>Rs.{product_price}</span>
           )}
         </div>
         <div className='cart-table__col'>
@@ -97,7 +97,7 @@ export const Card = ({ cart, onChangeQuantity }) => {
         </div>
         <div className='cart-table__col'>
           <span className='cart-table__total'>
-            ${(totalprice).toFixed(2)}
+            Rs.{Number(totalprice).toFixed(2)}
           </span>
         </div>
       </div>

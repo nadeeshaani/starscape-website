@@ -39,7 +39,7 @@ export const CheckoutOrders = () => {
       <div className='cart-bottom__total'>
         <div className='cart-bottom__total-num'>
           total:
-          <span>${(total_pri + 30).toFixed(2)}</span>
+          <span>Rs.{(total_pri).toFixed(2)}</span>
         </div>
       </div>
     </>
