@@ -17,12 +17,13 @@ export const Card = ({ }) => {
         console.error(error);
       });
   }, []);
-  const uniqueItems = [...new Set(cartItems.map(item => item.cartItemId))];
-  const filteredCartItems = cartItems.filter(item => uniqueItems.includes(item.cartItemId));
-  
+
+  const token = localStorage.getItem('jwtToken');
+  const endpointUrl = `http://localhost:8090/cart/add?jwtToken=${token}`;
+
   return (
     <>
-      {filteredCartItems.map((item) => (
+      {cartItems.map((item) => (
         <div className='cart-table__row' key={item.cartItemId}>
           <div className='cart-table__col'>
             <Link href={`/product/${item.product.product_id}`}>
@@ -49,7 +50,16 @@ export const Card = ({ }) => {
             <div className='cart-table__quantity'>
               <div className='counter-box'>
                 <span
-                  onClick={() => onChangeQuantity('decrement', item.quantity)}
+                  onClick={() => 
+                    //decremenet
+                    fetch(endpointUrl, {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({ product_id: item.product.product_id, quantity: item.quantity-1 }),
+                    })
+                      .then((res) => res.json())
+                      .catch((err) => console.error(err))
+                  }
                   className='counter-link counter-link__prev'
                 >
                   <i className='icon-arrow'></i>
@@ -61,7 +71,17 @@ export const Card = ({ }) => {
                   value={item.quantity}
                 />
                 <span
-                  onClick={() => onChangeQuantity('increment', item.quantity)}
+                  onClick={() => 
+                    //Incremenet
+                    fetch(endpointUrl, {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({ product_id: item.product.product_id, quantity: item.quantity+1 }),
+                    })
+                      .then((res) => res.json())
+                      
+                      .catch((err) => console.error(err))
+                  }
                   className='counter-link counter-link__next'
                 >
                   <i className='icon-arrow'></i>
