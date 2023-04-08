@@ -5,8 +5,9 @@ import Link from 'next/link';
 export const Info = () => {
   const [play, setPlay] = useState(false);
   const url = play
-    ? 'https://www.youtube.com/embed/K1yp7Q1hH1c?autoplay=1'
-    : '';
+  ? 'https://www.youtube.com/embed/bUDYpnBwzDo?autoplay=1'
+  : '';
+
   return (
     <>
        {/* <!-- BEGIN INFO BLOCKS --> */}
@@ -27,11 +28,12 @@ export const Info = () => {
           </div>
           <div className='info-blocks__item-text'>
             <span className='saint-text'>About Us</span>
-            <h2>Who we are</h2>
-            <span className='info-blocks__item-descr'>
+            <h2 style={{ color: 'white' }}>Who we are</h2>
+
+            <span className='info-blocks__item-descr' style={{ color: 'white' }}>
              "Somewhere, something incredible is waiting to be known." Why wait any longer?
             </span>
-            <p>
+            <p style={{ color: 'white' }}>
               Non aliqua reprehenderit reprehenderit culpa laboris nulla minim
               anim velit adipisicing ea aliqua alluptate sit do do.Non aliqua
               reprehenderit reprehenderit culpa laboris nulla minim anim velit
@@ -39,10 +41,10 @@ export const Info = () => {
               reprehenderit reprehenderit culpa laboris nulla minim.
             </p>
             <Link href='/about'>
-              <a className='info-blocks__item-link'>
-                <i className='icon-video'></i>
+              <a className='info-blocks__item-link' style={{ color: 'white' }}>
+                <i className='icon-video' style={{ color: 'white' }}></i>
                 Watch video about us
-                <i className='icon-arrow-lg'></i>
+                <i className='icon-arrow-lg' style={{ color: 'white' }}></i>
               </a>
             </Link>
           </div>

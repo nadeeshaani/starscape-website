@@ -15,8 +15,8 @@ export default function Home() {
     <Layout>
       <Banner />
       <BrandLogo />
+      <Info />
       <Discount />
-      <Advantage />
       <TopCategories />
       <LatestNews />
       <Subscribe />
