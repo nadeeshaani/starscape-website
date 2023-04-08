@@ -26,10 +26,7 @@ export const Cart = () => {
 
 
 
-  const total = cart.reduce(
-    (total, item) => total + Number(item.price) * Number(item.quantity),
-    0
-  );
+  const total = cart.reduce((acc, item) => acc + item.totalprice, 0) ;
 
   const handleProductQuantity = (change, quantity, id) => {
     console.log(change, quantity, id);
@@ -74,20 +71,7 @@ export const Cart = () => {
           </div>
           <div className='cart-bottom'>
             <div className='cart-bottom__promo'>
-              <form className='cart-bottom__promo-form'>
-                <div className='box-field__row'>
-                  <div className='box-field'>
-                    <input
-                      type='text'
-                      className='form-control'
-                      placeholder='Enter promo code'
-                    />
-                  </div>
-                  <button type='submit' className='btn btn-grey'>
-                    apply code
-                  </button>
-                </div>
-              </form>
+              
               <h6>How to get a promo code?</h6>
               <p>
                 Follow our news on the website, as well as subscribe to our
@@ -109,10 +93,6 @@ export const Cart = () => {
               </div>
             </div>
             <div className='cart-bottom__total'>
-              <div className='cart-bottom__total-goods'>
-                Goods on
-                <span>${total.toFixed(2)}</span>
-              </div>
               <div className='cart-bottom__total-promo'>
                 Discount on promo code
                 <span>No</span>
