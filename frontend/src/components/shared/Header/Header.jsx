@@ -90,14 +90,22 @@ export const Header = () => {
             </li>
           )}
 
-              <li>
-                <Link href='/cart'>
-                  <a>
-                    <i className='icon-cart'style={{color: 'white'}}></i>
-                    <span>{cart.length ?? '0'}</span>
-                  </a>
-                </Link>
-              </li>
+        {jwtToken ? (
+            <li>
+            <Link href='/cart'>
+              <a>
+                <i className='icon-cart'style={{color: 'white'}}></i>
+                <span>{cart.length ?? '0'}</span>
+              </a>
+            </Link>
+          </li>
+          ) : (
+            <li>
+              
+            </li>
+          )}
+
+              
             </ul>
           </div>
 

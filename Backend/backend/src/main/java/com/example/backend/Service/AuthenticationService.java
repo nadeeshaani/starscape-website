@@ -151,9 +151,9 @@ public class AuthenticationService {
                 .orElseThrow();
 
         //Optional, recheck this portion. Should it belong to authentication?
-//        if (user.getRole() == Role.USER && !user.isVerified()) {
-//            throw new RuntimeException("User is not verified");
-//        }
+        if (user.getRole() == Role.USER && !user.isVerified()) {
+            throw new RuntimeException("User is not verified");
+        }
 
         var jwtToken = jwtService.generateToken(user);
         revokeAllUserTokens(user);
