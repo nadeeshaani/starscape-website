@@ -17,10 +17,16 @@ export const Registration = () => {
       password,
     }),
   });
-  const data = await response.json();
-  console.log(data);
-  alert('check your email for email verification!');
-  router.push('/login');
+  try {
+    const data = await response.json();
+    alert('check your email for email verification!');
+    router.push('/login');
+  } catch (error) {
+    alert("The Username already registered");
+    router.push('/registration');
+
+  }
+
 };
 
 
