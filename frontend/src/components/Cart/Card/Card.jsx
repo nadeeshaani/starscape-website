@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useRouter } from 'next/router';
+
 
 
 export const Card = ({ }) => {
@@ -20,6 +22,8 @@ export const Card = ({ }) => {
 
   const token = localStorage.getItem('jwtToken');
   const endpointUrl = `http://localhost:8090/cart/add?jwtToken=${token}`;
+  const router = useRouter();
+
 
   return (
     <>
@@ -50,16 +54,20 @@ export const Card = ({ }) => {
             <div className='cart-table__quantity'>
               <div className='counter-box'>
                 <span
-                  onClick={() => 
-                    //decremenet
+                   onClick={() => {
+                    //Increment
                     fetch(endpointUrl, {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
                       body: JSON.stringify({ product_id: item.product.product_id, quantity: item.quantity-1 }),
                     })
-                      .then((res) => res.json())
-                      .catch((err) => console.error(err))
-                  }
+                    .then((res) => res.json())
+                    .then(() => {
+                      // Reload page
+                      router.reload();
+                    })
+                    .catch((err) => console.error(err));
+                  }}
                   className='counter-link counter-link__prev'
                 >
                   <i className='icon-arrow'></i>
@@ -71,17 +79,20 @@ export const Card = ({ }) => {
                   value={item.quantity}
                 />
                 <span
-                  onClick={() => 
-                    //Incremenet
+                  onClick={() => {
+                    //Increment
                     fetch(endpointUrl, {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
                       body: JSON.stringify({ product_id: item.product.product_id, quantity: item.quantity+1 }),
                     })
-                      .then((res) => res.json())
-                      
-                      .catch((err) => console.error(err))
-                  }
+                    .then((res) => res.json())
+                    .then(() => {
+                      // Reload page
+                      router.reload();
+                    })
+                    .catch((err) => console.error(err));
+                  }}
                   className='counter-link counter-link__next'
                 >
                   <i className='icon-arrow'></i>
