@@ -1,5 +1,5 @@
 
-# starscape-website 🥳🥳🥳
+# starscape-website 👩‍🚀👨‍🚀🌌
 
 ## Follow the following steps to run Starscape
 
